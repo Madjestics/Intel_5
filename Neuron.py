@@ -19,7 +19,6 @@ class NeuralNetwork:
         self.b2 = b2
 
     def feedforward(self, inputs, weights, bias):
-        # Умножаем входы на веса, прибавляем порог, затем используем функцию активации
         return inputs @ weights + bias
 
     def predict(self, x):
@@ -45,7 +44,7 @@ class NeuralNetwork:
         return acc
 
     def train(self, dataset):
-        NUM_EPOCHS = 200
+        NUM_EPOCHS = 250
         ALPHA = 0.05
         for ep in range(NUM_EPOCHS):
             random.shuffle(dataset)
@@ -77,5 +76,5 @@ class NeuralNetwork:
             print(ep)
             accuracy = self.calc_accuracy(dataset)
             print("Accuracy:", accuracy)
-            if 1 - accuracy < 0.01:
+            if 1 - accuracy < 0.001:
                 break
